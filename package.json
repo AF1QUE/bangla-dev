@@ -1,0 +1,25 @@
+{
+  "name": "bangla-dev",
+  "version": "1.0.0",
+  "description": "A hyper niche tech job board for developers",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AF1QUE/bangla-dev.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AF1QUE/bangla-dev/issues"
+  },
+  "homepage": "https://github.com/AF1QUE/bangla-dev#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
