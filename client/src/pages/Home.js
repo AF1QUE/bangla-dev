@@ -33,12 +33,13 @@ export default function Home() {
               opportunities in today's tech industry.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <button
+                type="button"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Browse Jobs
-              </a>
+              </button>
+
               <a
                 href="#"
                 className="text-sm font-semibold leading-6 text-gray-900"
@@ -61,13 +62,14 @@ export default function Home() {
           />
         </div>
       </div>
+
       <div className="flex flex-col items-center">
         <div className="max-w-7xl my-4">
           <JobGrid />
         </div>
       </div>
 
-      {/* <div className="max-w-7xl my-4 flex flex-col">
+      <div className="my-16">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 text-center mt-12">
           Tech Companies in Bangladesh
         </h2>
@@ -75,8 +77,9 @@ export default function Home() {
           The most exhaustive list of diverse, modern companies in Japan hiring
           software developers
         </p>
-      </div> */}
-      <div className="flex justify-stretch">
+      </div>
+
+      <div className="min-w-7xl max-w-7xl flex-col mx-auto">
         <CompanyGrid />
       </div>
 

@@ -11,19 +11,24 @@ import Jobs from "./pages/Jobs";
 import Companies from "./pages/Companies";
 
 // User Pages
-import Dashboard from "./pages/user/Dashboard";
-import JobsList from "./pages/user/JobsList";
-import ApplicationsList from "./pages/user/ApplicationsList";
-import Orders from "./pages/user/Orders";
-import CompanySettings from "./pages/user/CompanySettings";
+import Dashboard from "./pages/dashboard/Dashboard";
+import JobsList from "./pages/dashboard/JobsList";
+import ApplicationsList from "./pages/dashboard/ApplicationsList";
+import OrdersList from "./pages/dashboard/OrdersList";
+import CompanySettings from "./pages/dashboard/CompanySettings";
 
 // Single Pages
-import CompanyDetail from "./pages/single/CompanyDetail";
-import ApplicationDetail from "./pages/single/ApplicationDetail";
+import SingleCompany from "./pages/single/SingleCompany";
+import SingleApplication from "./pages/single/SingleApplication";
+import SingleJob from "./pages/single/SingleJob";
 
 // Components & Layouts
 import Navbar from "./components/layouts/Navbar";
-import UserLayout from "./components/layouts/Sidebar";
+import Sidebar from "./components/layouts/Sidebar";
+import ApplicationBar from "./components/layouts/ApplicationBar";
+
+// Edit Pages
+import EditProfile from "./pages/edit/EditProfile";
 
 function App() {
   return (
@@ -34,16 +39,20 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="blog" element={<Blog />} />
           <Route path="jobs" element={<Jobs />} />
+          <Route path="jobs/:id" element={<SingleJob />} />
           <Route path="companies" element={<Companies />} />
-          <Route path="companies/:id" element={<CompanyDetail />} />
+          <Route path="companies/:id" element={<SingleCompany />} />
         </Route>
 
-        <Route path="dashboard" element={<UserLayout />}>
+        <Route path="dashboard" element={<Sidebar />}>
           <Route index element={<Dashboard />} />
           <Route path="jobs" element={<JobsList />} />
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders" element={<OrdersList />} />
           <Route path="applications" element={<ApplicationsList />} />
-          <Route path="applications/hello" element={<ApplicationDetail />} />
+          <Route path="applications/view/:id" element={<ApplicationBar />}>
+            <Route index element={<SingleApplication />} />
+          </Route>
+          <Route path="profile/settings" element={<EditProfile />} />
           <Route path="company" element={<CompanySettings />} />
         </Route>
 

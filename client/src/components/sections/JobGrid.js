@@ -7,48 +7,99 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline";
 
-const actions = [
+import { Link } from "react-router-dom";
+
+import logo1 from "../../logos/logo-copymatic.jpg";
+import logo2 from "../../logos/logo-2.jpg";
+import logo3 from "../../logos/logo-3.jpg";
+import logo4 from "../../logos/logo-4.jpg";
+import logo5 from "../../logos/logo-5.jpg";
+import logo6 from "../../logos/logo-6.jpg";
+import logo7 from "../../logos/logo-csm.jpg";
+import logo8 from "../../logos/logo-8.jpg";
+import logo9 from "../../logos/logo-9.jpg";
+import logo10 from "../../logos/logo-10.jpg";
+
+const jobs = [
   {
-    title: "Request time off",
-    href: "#",
-    icon: ClockIcon,
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
+    title: "Python Engineer",
+    company: "GoogleHQ",
+    id: "1",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    logo: logo1,
+    featured: true,
   },
   {
-    title: "Benefits",
-    href: "#",
-    icon: CheckBadgeIcon,
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
+    title: "Software Engineer (Full Stack)",
+    company: "Amazon",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "2",
+    logo: logo2,
+    featured: true,
   },
   {
-    title: "Schedule a one-on-one",
-    href: "#",
-    icon: UsersIcon,
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
+    title: "Product Manager, LINK Data",
+    company: "Ratuken",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "3",
+    logo: logo3,
+    featured: true,
   },
   {
-    title: "Payroll",
-    href: "#",
-    icon: BanknotesIcon,
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
+    title: "Senior Software Engineer",
+    company: "Drivemode",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "4",
+    logo: logo4,
+    featured: true,
   },
   {
-    title: "Submit an expense",
-    href: "#",
-    icon: ReceiptRefundIcon,
-    iconForeground: "text-rose-700",
-    iconBackground: "bg-rose-50",
+    title: "Senior UX Designer",
+    company: "Alexspace",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "5",
+    logo: logo5,
+    featured: true,
   },
   {
-    title: "Training",
-    href: "#",
-    icon: AcademicCapIcon,
-    iconForeground: "text-indigo-700",
-    iconBackground: "bg-indigo-50",
+    title: "Android Developer",
+    company: "Carnot",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "6",
+    logo: logo6,
+    featured: true,
+  },
+  {
+    title: "React Native Developer",
+    company: "Siva",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "7",
+    logo: logo7,
+    featured: false,
+  },
+  {
+    title: "Senior Front End Engineer (Next.js + Typescript)",
+    company: "Money Forward",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "8",
+    logo: logo8,
+    featured: false,
+  },
+  {
+    title: "QA Manager - Media and Data Solution",
+    company: "AlpacaTech",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "9",
+    logo: logo9,
+    featured: false,
+  },
+  {
+    title: "Backend Developer",
+    company: "Kraken",
+    tags: ["Remote", "React", "TypeScript", "Python"],
+    id: "10",
+    logo: logo1,
+    featured: false,
   },
 ];
 
@@ -56,61 +107,57 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function JobGrid() {
   return (
     <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-      {actions.map((action, actionIdx) => (
+      {jobs.map((job, jobIdx) => (
         <div
-          key={action.title}
+          key={job.title}
           className={classNames(
-            actionIdx === 0
+            jobIdx === 0
               ? "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
               : "",
-            actionIdx === 1 ? "sm:rounded-tr-lg" : "",
-            actionIdx === actions.length - 2 ? "sm:rounded-bl-lg" : "",
-            actionIdx === actions.length - 1
+            jobIdx === 1 ? "sm:rounded-tr-lg" : "",
+            jobIdx === jobs.length - 2 ? "sm:rounded-bl-lg" : "",
+            jobIdx === jobs.length - 1
               ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
               : "",
-            "relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
+            "flex flex-row gap-4 items-start relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
           )}
         >
           <div>
-            <span
-              className={classNames(
-                action.iconBackground,
-                action.iconForeground,
-                "rounded-lg inline-flex p-3 ring-4 ring-white"
-              )}
-            >
-              <action.icon className="h-6 w-6" aria-hidden="true" />
-            </span>
+            <div className="flex flex-col items-center max-w-[100px] min-w-[100px]">
+              <img src={job.logo} className="w-[60px] rounded-md" />
+              <span className="text-center text-sm text-gray-700 mt-2">
+                {job.company}
+              </span>
+            </div>
           </div>
-          <div className="mt-8">
+          <div className="">
+            {job.featured ? (
+              <div className="mb-2">
+                <span
+                  id="badge-dismiss-dark"
+                  class="inline-flex items-center px-2 py-1 mr-2 text-sm font-medium text-black bg-yellow-300 rounded-full"
+                >
+                  Featured
+                </span>
+              </div>
+            ) : (
+              " "
+            )}
             <h3 className="text-lg font-medium">
-              <a href={action.href} className="focus:outline-none">
+              <Link to={`jobs/${job.id}`} className="focus:outline-none">
                 {/* Extend touch target to entire panel */}
                 <span className="absolute inset-0" aria-hidden="true" />
-                {action.title}
-              </a>
+                {job.title}
+              </Link>
             </h3>
             <p className="mt-2 text-sm text-gray-500">
               Doloribus dolores nostrum quia qui natus officia quod et dolorem.
               Sit repellendus qui ut at blanditiis et quo et molestiae.
             </p>
           </div>
-          <span
-            className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
-            aria-hidden="true"
-          >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-            </svg>
-          </span>
         </div>
       ))}
     </div>

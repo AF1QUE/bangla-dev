@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Fragment, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
@@ -21,17 +22,15 @@ const navigation = [
     icon: FolderIcon,
     parent: false,
   },
+  { name: "Orders", url: "orders", icon: CalendarIcon, parent: false },
   {
     name: "Company",
     url: "company",
     icon: DocumentDuplicateIcon,
     parent: false,
   },
-  { name: "Orders", url: "orders", icon: CalendarIcon, parent: false },
 ];
 const teams = [
-  { id: 1, name: "Heroicons", url: "#", initial: "H", parent: false },
-  { id: 2, name: "Tailwind Labs", url: "#", initial: "T", parent: false },
   { id: 3, name: "Workcation", url: "#", initial: "W", parent: false },
 ];
 
@@ -108,11 +107,13 @@ export default function Example() {
                   {/* Sidebar component, swap this element with another sidebar if you like */}
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-white px-6 pb-2">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                        alt="Your Company"
-                      />
+                      <Link to="/">
+                        <img
+                          className="h-8 w-auto"
+                          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                          alt="Your Company"
+                        />
+                      </Link>
                     </div>
                     <nav className="flex flex-1 flex-col">
                       <ul role="list" className="flex flex-1 flex-col gap-y-7">
@@ -190,11 +191,13 @@ export default function Example() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
             <div className="flex h-16 shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://i.ibb.co/H7kTPfg/bangla-dev-logo.png"
-                alt="Your Company"
-              />
+              <Link to="/">
+                <img
+                  className="h-8 w-auto"
+                  src="https://i.ibb.co/H7kTPfg/bangla-dev-logo.png"
+                  alt="Your Company"
+                />
+              </Link>
             </div>
             <nav className="flex flex-1 flex-col">
               <ul role="list" className="flex flex-1 flex-col gap-y-7">

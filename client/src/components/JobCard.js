@@ -1,139 +1,59 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  const colors = require('tailwindcss/colors')
-  
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        colors: {
-          sky: colors.sky,
-          teal: colors.teal,
-          rose: colors.rose,
-        },
-      },
-    },
-  }
-  ```
-*/
-import {
-  AcademicCapIcon,
-  BanknotesIcon,
-  CheckBadgeIcon,
-  ClockIcon,
-  ReceiptRefundIcon,
-  UsersIcon,
-} from "@heroicons/react/24/outline";
+import ClassNames from "classnames";
+import { Link } from "react-router-dom";
+import { HiLocationMarker, HiUser } from "react-icons/hi";
 
-const actions = [
-  {
-    title: "Request time off",
-    href: "#",
-    icon: ClockIcon,
-    iconForeground: "text-teal-700",
-    iconBackground: "bg-teal-50",
-  },
-  {
-    title: "Benefits",
-    href: "#",
-    icon: CheckBadgeIcon,
-    iconForeground: "text-purple-700",
-    iconBackground: "bg-purple-50",
-  },
-  {
-    title: "Schedule a one-on-one",
-    href: "#",
-    icon: UsersIcon,
-    iconForeground: "text-sky-700",
-    iconBackground: "bg-sky-50",
-  },
-  {
-    title: "Payroll",
-    href: "#",
-    icon: BanknotesIcon,
-    iconForeground: "text-yellow-700",
-    iconBackground: "bg-yellow-50",
-  },
-  {
-    title: "Submit an expense",
-    href: "#",
-    icon: ReceiptRefundIcon,
-    iconForeground: "text-rose-700",
-    iconBackground: "bg-rose-50",
-  },
-  {
-    title: "Training",
-    href: "#",
-    icon: AcademicCapIcon,
-    iconForeground: "text-indigo-700",
-    iconBackground: "bg-indigo-50",
-  },
-];
+export default function JobCard({ job, className }) {
+  const styles = className;
+  const tags = job.tags.map((tag) => (
+    <span class="rounded-full bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+      {tag}
+    </span>
+  ));
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function Example() {
   return (
-    <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0">
-      {actions.map((action, actionIdx) => (
-        <div
-          key={action.title}
-          className={classNames(
-            actionIdx === 0
-              ? "rounded-tl-lg rounded-tr-lg sm:rounded-tr-none"
-              : "",
-            actionIdx === 1 ? "sm:rounded-tr-lg" : "",
-            actionIdx === actions.length - 2 ? "sm:rounded-bl-lg" : "",
-            actionIdx === actions.length - 1
-              ? "rounded-bl-lg rounded-br-lg sm:rounded-bl-none"
-              : "",
-            "relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500"
-          )}
-        >
-          <div>
-            <span
-              className={classNames(
-                action.iconBackground,
-                action.iconForeground,
-                "rounded-lg inline-flex p-3 ring-4 ring-white"
-              )}
-            >
-              <action.icon className="h-6 w-6" aria-hidden="true" />
+    <Link to={job.id}>
+      <div
+        className={ClassNames(
+          styles,
+          "group rounded-lg border flex justify-between border-gray-300 bg-white px-5 py-5 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:border-gray-400"
+        )}
+      >
+        <div className="">
+          <h3 className="text-lg font-medium">
+            <a href="#" className="focus:outline-none">
+              {/* Extend touch target to entire panel */}
+
+              {job.title}
+            </a>
+            <span className="block text-sm text-gray-500 mt-2">
+              {job.company}
+            </span>
+          </h3>
+
+          <div className="mt-4 flex gap-2">{tags}</div>
+          <div className="flex gap-8 mt-4">
+            <span className="flex items-center gap-2 text-base text-gray-600">
+              <HiLocationMarker />
+              {job.location}
+            </span>
+
+            <span className="flex items-center gap-2 text-base text-gray-600">
+              <HiUser />
+              {job.category}
             </span>
           </div>
-          <div className="mt-8">
-            <h3 className="text-lg font-medium">
-              <a href={action.href} className="focus:outline-none">
-                {/* Extend touch target to entire panel */}
-                <span className="absolute inset-0" aria-hidden="true" />
-                {action.title}
-              </a>
-            </h3>
-            <p className="mt-2 text-sm text-gray-500">
-              Doloribus dolores nostrum quia qui natus officia quod et dolorem.
-              Sit repellendus qui ut at blanditiis et quo et molestiae.
-            </p>
-          </div>
-          <span
-            className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
-            aria-hidden="true"
-          >
-            <svg
-              className="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-            </svg>
-          </span>
         </div>
-      ))}
-    </div>
+
+        <div className="flex flex-col items-center justify-between">
+          <img src={job.logo} className="w-[60px] rounded-md" />
+          <button
+            type="button"
+            className="invisible group-hover:visible rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Apply Now
+          </button>
+        </div>
+      </div>
+    </Link>
   );
 }

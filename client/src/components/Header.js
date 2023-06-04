@@ -8,7 +8,7 @@ export default function Header() {
 
   const navigation = [
     { name: "Browse Jobs", url: "jobs" },
-    { name: "Company List", url: "companies" },
+    // { name: "Company List", url: "companies" },
     { name: "Blog", url: "blog" },
     { name: "About", url: "about" },
   ];
@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="absolute inset-x-0 top-0 z-50 max-w-7xl mx-auto">
       <nav
-        className="flex items-center justify-between py-6 sm:px-8"
+        className="flex items-center justify-between py-6 "
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
