@@ -1,11 +1,16 @@
+// job.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Location = require("./LocationModel"); // assuming you have defined the Location model
+const Category = require("./CategoryModel"); // assuming you have defined the Category model
+const Employer = require("./EmployerModel"); // assuming you have defined the Employer model
 
-const JobModel = sequelize.define("Job", {
+const JobModel = sequelize.define("job", {
   job_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   title: {
     type: DataTypes.STRING(50),
@@ -20,7 +25,7 @@ const JobModel = sequelize.define("Job", {
     allowNull: false,
   },
   date_posted: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   featured: {
@@ -42,7 +47,7 @@ const JobModel = sequelize.define("Job", {
   location_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Location",
+      model: Location,
       key: "location_id",
     },
     allowNull: false,
@@ -50,7 +55,7 @@ const JobModel = sequelize.define("Job", {
   category_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Category",
+      model: Category,
       key: "category_id",
     },
     allowNull: false,
@@ -58,7 +63,7 @@ const JobModel = sequelize.define("Job", {
   employer_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Employer",
+      model: Employer,
       key: "employer_id",
     },
     allowNull: false,

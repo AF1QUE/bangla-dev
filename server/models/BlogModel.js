@@ -1,11 +1,14 @@
+// blog.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Admin = require("./AdminModel"); // assuming you have defined the Admin model
 
-const BlogModel = sequelize.define("Blog", {
+const BlogModel = sequelize.define("blog", {
   blog_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   title: {
     type: DataTypes.STRING(100),
@@ -20,7 +23,7 @@ const BlogModel = sequelize.define("Blog", {
     allowNull: false,
   },
   date_posted: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   status: {
@@ -30,7 +33,7 @@ const BlogModel = sequelize.define("Blog", {
   admin_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Admin",
+      model: Admin,
       key: "admin_id",
     },
     allowNull: false,

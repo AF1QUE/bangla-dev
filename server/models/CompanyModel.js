@@ -1,11 +1,15 @@
+// company.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Location = require("./LocationModel"); // assuming you have defined the Location model
+const Employer = require("./EmployerModel"); // assuming you have defined the Employer model
 
-const CompanyModel = sequelize.define("Company", {
+const CompanyModel = sequelize.define("company", {
   company_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   name: {
     type: DataTypes.STRING(100),
@@ -31,7 +35,7 @@ const CompanyModel = sequelize.define("Company", {
     allowNull: false,
   },
   founding_date: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   description: {
@@ -41,7 +45,7 @@ const CompanyModel = sequelize.define("Company", {
   location_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Location",
+      model: Location,
       key: "location_id",
     },
     allowNull: false,
@@ -49,7 +53,7 @@ const CompanyModel = sequelize.define("Company", {
   employer_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Employer",
+      model: Employer,
       key: "employer_id",
     },
     allowNull: false,

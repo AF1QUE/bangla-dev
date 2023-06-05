@@ -1,0 +1,120 @@
+@baseurl = http://localhost:4000
+
+##############
+# User Endpoints
+##############
+
+### Create a new user
+POST {{baseurl}}/users
+Content-Type: application/json
+
+{
+  "first_name": "Junaid",
+  "last_name": "Kazi",
+  "email": "johndoe@example.com",
+  "password": "password123",
+  "gender": "Male",
+  "date_of_birth": "1990-01-01",
+  "avatar": "https://example.com/avatar.jpg",
+  "role": "user"
+}
+
+### Get user by ID
+GET {{baseurl}}/users/2
+
+### Update user by ID
+PUT {{baseurl}}/users/1
+Content-Type: application/json
+
+{
+  "first_name": "John",
+  "last_name": "Smith",
+  "email": "johnsmith@example.com"
+}
+
+### Delete user by ID
+DELETE {{baseurl}}/users/1
+
+### Get all users
+GET {{baseurl}}/users
+
+
+##############
+# Job Endpoints
+##############
+
+### Create a new job
+POST {{baseurl}}/jobs
+Content-Type: application/json
+
+{
+  "title": "The Last Engineer ",
+  "description": "Job description goes here.",
+  "salary": 50000,
+  "date_posted": "2023-06-05",
+  "featured": "true",
+  "seniority_level": "Mid-level",
+  "english_level": "Fluent",
+  "type": "Full-time",
+  "location_id": 1,
+  "category_id": 2,
+  "employer_id": 3
+}
+
+### Get job by ID
+GET {{baseurl}}/jobs/1
+
+### Update job by ID
+PUT {{baseurl}}/jobs/2
+Content-Type: application/json
+
+{
+  "title": "Senior Software Developer",
+  "description": "We are seeking an experienced software developer..."
+}
+
+### Delete job by ID
+DELETE {{baseurl}}/jobs/22
+
+### Get all jobs
+GET {{baseurl}}/jobs
+
+
+##############
+# Company Endpoints
+##############
+
+### Create a new company
+POST {{baseurl}}/companies
+Content-Type: application/json
+
+{
+  "name": "ABC Corporation",
+  "logo": "https://example.com/logo.png",
+  "website": "https://example.com",
+  "facebook": "https://facebook.com/abc",
+  "twitter": "https://twitter.com/abc",
+  "linkedin": "https://linkedin.com/company/abc",
+  "employee_count": 1000,
+  "founding_date": "1990-01-01",
+  "description": "ABC Corporation is a leading global company...",
+  "location_id": 1,
+  "employer_id": 1
+}
+
+### Get company by ID
+GET {{baseurl}}/companies/1
+
+### Update company by ID
+PUT {{baseurl}}/companies/1
+Content-Type: application/json
+
+{
+  "name": "ABC Corporation Inc."
+}
+
+### Delete company by ID
+DELETE {{baseurl}}/companies/1
+
+### Get all companies
+GET {{baseurl}}/companies

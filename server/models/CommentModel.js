@@ -1,19 +1,20 @@
+// comment.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Blog = require("./BlogModel"); // assuming you have defined the Blog model
+const User = require("./UsersModel"); // assuming you have defined the User model
 
-const CommentModel = sequelize.define("Comment", {
+const CommentModel = sequelize.define("comment", {
   comment_description: {
     type: DataTypes.TEXT,
-    allowNull: false,
   },
   date_commented: {
-    type: DataTypes.DATEONLY,
-    allowNull: false,
+    type: DataTypes.DATE,
   },
   blog_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Blog",
+      model: Blog,
       key: "blog_id",
     },
     allowNull: false,
@@ -21,7 +22,7 @@ const CommentModel = sequelize.define("Comment", {
   user_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "User",
+      model: User,
       key: "user_id",
     },
     allowNull: false,

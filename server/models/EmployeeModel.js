@@ -1,11 +1,13 @@
+// employee.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
 
-const EmployeeModel = sequelize.define("Employee", {
+const EmployeeModel = sequelize.define("employee", {
   employee_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   biography: {
     type: DataTypes.STRING(200),

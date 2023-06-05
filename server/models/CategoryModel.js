@@ -1,11 +1,13 @@
+// category.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
 
-const CategoryModel = sequelize.define("Category", {
+const CategoryModel = sequelize.define("category", {
   category_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   name: {
     type: DataTypes.TEXT,

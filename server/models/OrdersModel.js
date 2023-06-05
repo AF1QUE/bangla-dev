@@ -1,11 +1,14 @@
+// orders.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Employer = require("./EmployerModel"); // assuming you have defined the Employer model
 
-const OrderModel = sequelize.define("Orders", {
+const OrdersModel = sequelize.define("orders", {
   order_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   time: {
     type: DataTypes.DATE,
@@ -30,11 +33,11 @@ const OrderModel = sequelize.define("Orders", {
   employer_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Employer",
+      model: Employer,
       key: "employer_id",
     },
     allowNull: false,
   },
 });
 
-module.exports = OrderModel;
+module.exports = OrdersModel;

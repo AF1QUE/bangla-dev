@@ -1,11 +1,16 @@
+// users.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
+const Admin = require("./AdminModel"); // assuming you have defined the Admin model
+const Employee = require("./EmployeeModel"); // assuming you have defined the Employee model
+const Employer = require("./EmployerModel"); // assuming you have defined the Employer model
 
-const UserModel = sequelize.define("User", {
+const UsersModel = sequelize.define("users", {
   user_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   first_name: {
     type: DataTypes.STRING(50),
@@ -41,7 +46,7 @@ const UserModel = sequelize.define("User", {
   admin_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Admin",
+      model: Admin,
       key: "admin_id",
     },
     unique: true,
@@ -49,7 +54,7 @@ const UserModel = sequelize.define("User", {
   employee_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Employee",
+      model: Employee,
       key: "employee_id",
     },
     unique: true,
@@ -57,11 +62,11 @@ const UserModel = sequelize.define("User", {
   employer_id: {
     type: DataTypes.BIGINT,
     references: {
-      model: "Employer",
+      model: Employer,
       key: "employer_id",
     },
     unique: true,
   },
 });
 
-module.exports = UserModel;
+module.exports = UsersModel;

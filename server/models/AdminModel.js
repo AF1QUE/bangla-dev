@@ -1,11 +1,13 @@
+// admin.js
 const { DataTypes } = require("sequelize");
-const sequelize = require("../config");
+const sequelize = require("../database"); // assuming you have configured Sequelize
 
-const AdminModel = sequelize.define("Admin", {
+const AdminModel = sequelize.define("admin", {
   admin_id: {
     type: DataTypes.BIGINT,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
 });
 
